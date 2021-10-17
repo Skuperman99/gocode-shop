@@ -13,15 +13,29 @@ import './Product.css';
 //     </div>
 //   );
 // }
-function Product(props) {
+
+// function Product(props) {
+//   return (
+//     <div className="product-card">
+//       <div className="product-image">
+//         <img src={props.image} alt="imageDescription" />
+//       </div>
+//       <div className="product-info">
+//         <h5>{props.name}</h5>
+//         <h6>{props.price}</h6>
+//       </div>
+//     </div>
+//   );
+// }
+function Product({image,name,price}) {
   return (
     <div className="product-card">
       <div className="product-image">
-        <img src={props.image} alt="imageDescription" />
+        <img src={image} alt="imageDescription" />
       </div>
       <div className="product-info">
-        <h5>{props.name}</h5>
-        <h6>{props.price}</h6>
+        <h5>{name}</h5>
+        <h6>{price}</h6>
       </div>
     </div>
   );
