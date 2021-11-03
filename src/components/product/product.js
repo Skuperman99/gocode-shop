@@ -1,4 +1,10 @@
 import './Product.css';
+import { useContext } from "react";
+import MyContext from '../../MyContext/MyContext';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+
+
 
 // function Product() {
 //   return (
@@ -27,17 +33,73 @@ import './Product.css';
 //     </div>
 //   );
 // }
-function Product({image,name,price}) {
+
+  function Product({image, title, price, id}) {
+    const [productsInCart, setProductsInCart] = useContext(MyContext);
+    const getAmount = () => {
+      let findProduct = productsInCart.find((product) => product.id === id)
+      if(findProduct) return findProduct.amount;}
+  
   return (
     <div className="product-card">
+      <Link to={`/Products/${id}`}>
       <div className="product-image">
-        <img src={image} alt="imageDescription" />
+        <img src={image} alt="" />
       </div>
       <div className="product-info">
-        <h5>{name}</h5>
-        <h6>{price}</h6>
+      <h6>{title}</h6>
+      <h6>{price}$</h6>
       </div>
-    </div>
+      </Link>
+
+      <div>
+                <Button varient="outlined" onClick={()=>{
+                    let newProductsList = [];
+                    // If exist
+                    let findIndex = productsInCart.findIndex((product)=> product.id === id)
+                    if(findIndex > -1){ //exists
+                        newProductsList = productsInCart.map((product) =>{
+                            if(product.id === id) {
+                                    product.amount++;
+                            }
+                            return product;
+                        })
+                    } else { // not exists
+                        newProductsList = [...productsInCart, {id, title, price, image, amount: 1}]
+                    }
+                    console.log(111, newProductsList)
+                    setProductsInCart(newProductsList)}}>+</Button>
+                <span>{getAmount()}</span>
+                <Button varient="contained" onClick={()=>{
+                    let newProductsList = [];
+                    // If exist
+                    let findIndex = productsInCart.findIndex((product)=> product.id === id)
+                    let isNeedDelete = false;
+                    if(findIndex > -1){ //exists
+                        newProductsList = productsInCart.map((product) =>{
+                            if(product.id === id) {
+                                if(product.amount >1)
+                                    {product.amount--;}
+                                    else{
+                                        // delete from list
+                                        isNeedDelete = true;
+                                    }
+                            }
+                            return product;
+                        })
+                        if(isNeedDelete){
+                            newProductsList = productsInCart.filter((product) => product.id !==id)
+                        }
+                    } else { // not exists
+                        newProductsList = [...productsInCart]
+                    }
+                    setProductsInCart(newProductsList)}}>-</Button>
+            </div>
+        </div>
+        
+        
+      
+    
   );
 }
   export default Product;

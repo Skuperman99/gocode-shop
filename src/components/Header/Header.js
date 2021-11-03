@@ -1,9 +1,9 @@
 import './Header.css';
 
-function Header({categories, onSelectCategory}) {
+function Header({categories, onSelectCategory,FilterByPrice}) {
   return (
 <nav className="product-filter">
-    <h1>Jackets</h1>
+    <h1>My Store</h1>
 
     <div className="sort">
 <div className="collection-sort">

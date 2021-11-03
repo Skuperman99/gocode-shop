@@ -5,12 +5,13 @@ import './Products.css';
 
 
 
- function Products({ProductsL}) {
+ function Products(props) {
 
   return (
     <section className="Products">
-     {ProductsL.map((product) => (
+     {props.products.map((product) => (
    < Product title={product.title}
+   id={product.id}
               key={product.id} 
               price={product.price} 
               description={product.description}
