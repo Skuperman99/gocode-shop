@@ -13,7 +13,7 @@ function Home() {
  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("/api/products")
       .then((res) => {
                 return res.json();
       })
