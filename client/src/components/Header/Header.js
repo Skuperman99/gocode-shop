@@ -1,7 +1,7 @@
 import './Header.css';
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import { useState } from "react";
+import React, { useState } from "react";
 function Header({categories, onSelectCategory,onPrice}) {
   const [value, setValue] = React.useState([1, 1000]);
 
