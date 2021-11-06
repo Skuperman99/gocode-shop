@@ -1,6 +1,14 @@
 import './Header.css';
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import { useState } from "react";
+function Header({categories, onSelectCategory,onPrice}) {
+  const [value, setValue] = React.useState([1, 1000]);
 
-function Header({categories, onSelectCategory,FilterByPrice}) {
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    onPrice(value[0], value[1]);
+  };
   return (
 <nav className="product-filter">
     <h1>My Store</h1>
@@ -17,7 +25,17 @@ function Header({categories, onSelectCategory,FilterByPrice}) {
   </select>
 </div>
 
-
+<Box sx={{ width: 200 ,padding: '0 20px;'}}>
+                <Slider
+                    getAriaLabel={() => 'Temperature range'}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={1000}
+                />
+                {value[0]} - {value[1]}
+            </Box>
 
 <div className="collection-sort">
   <label>Sort by:</label>
