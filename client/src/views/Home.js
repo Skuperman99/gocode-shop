@@ -23,7 +23,7 @@ function Home() {
         setMyAllProductsList(myProductsList);
         let categories = myProductsList.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
         setCategories(categories)
-        setProductsPrice(productsPrice);
+        setProductsPrice(myProductsList);
         });
   }, []);
   const categorySelected = (category) =>{
@@ -36,8 +36,9 @@ function Home() {
   }
   
   const FilterPrice = (minPrice, maxPrice) => {
-    let filteredProductsP = myAllProductsList.filter((x) => x.price >= minPrice && x.price <= maxPrice);
-    setMyProductsList(filteredProductsP);
+    setProductsPrice(
+      productsPrice.filter((x) => x.price >= minPrice && x.price <= maxPrice)
+    );
   };
 return (
     <div className="App">
