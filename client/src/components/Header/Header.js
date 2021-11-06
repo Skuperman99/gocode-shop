@@ -12,7 +12,7 @@ function Header({categories, onSelectCategory,onPrice}) {
   return (
 <nav className="product-filter">
     <h1>My Store</h1>
-////////
+
     <div className="sort">
 <div className="collection-sort">
   <label>Filter by:</label>
@@ -31,10 +31,10 @@ function Header({categories, onSelectCategory,onPrice}) {
                     value={value}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
                     min={0}
                     max={1000}
                 />
-                {value[0]} - {value[1]}
             </Box>
 
 <div className="collection-sort">
