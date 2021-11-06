@@ -35,7 +35,7 @@ function Home() {
     }
   }
   const FilterPrice = (minPrice, maxPrice) => {
-    setProductsCategory(
+    setCategories(
       productsPrice.filter((x) => x.price >= minPrice && x.price <= maxPrice)
     );
   };
