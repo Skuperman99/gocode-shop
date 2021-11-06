@@ -12,7 +12,7 @@ function Header({categories, onSelectCategory,onPrice}) {
   return (
 <nav className="product-filter">
     <h1>My Store</h1>
-
+////////
     <div className="sort">
 <div className="collection-sort">
   <label>Filter by:</label>
