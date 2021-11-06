@@ -2,17 +2,14 @@
 import Cart from "../components/Cart/Cart";
 import Header from "../components/Header/Header";
 //import MyContext from "../MyContext/MyContext";
-
-
 import { useEffect, useState } from "react";
 import Products from "../components/Products/Products";
 
 function Home() {
-    const [myProductsList, setMyProductsList] = useState([]);
+  const [myProductsList, setMyProductsList] = useState([]);
   const [myAllProductsList, setMyAllProductsList] = useState([]);
  const [categories, setCategories] = useState([]);
  const [productsPrice, setProductsPrice] = useState([]);
-
   useEffect(() => {
     fetch("/api/products")
       .then((res) => {
@@ -34,9 +31,8 @@ function Home() {
       setMyProductsList(filteredProducts);
     }
   }
-  
   const FilterPrice = (minPrice, maxPrice) => {
-    setProductsPrice(
+    setCategories(
       productsPrice.filter((x) => x.price >= minPrice && x.price <= maxPrice)
     );
   };
