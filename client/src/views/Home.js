@@ -18,9 +18,8 @@ function Home() {
       .then((myProductsList)=> {
         setMyProductsList(myProductsList);
         setMyAllProductsList(myProductsList);
-        let filteredProducts = myAllProductsList.filter((product) => product.category === category);
-        setMyProductsList(filteredProducts);
-        setCategories(category)
+        let categories = myProductsList.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
+        setCategories(categories);
         });
   }, []);
   const categorySelected = (category) =>{
@@ -29,6 +28,7 @@ function Home() {
     } else {
       let filteredProducts = myAllProductsList.filter((product) => product.category === category);
       setMyProductsList(filteredProducts);
+      setCategories(categories);
     }
   }
   const FilterPrice = (price) => {
