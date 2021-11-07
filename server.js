@@ -10,7 +10,7 @@ app.use(express.json()); //middleware for post- parser our req body
 app.use(express.static("client/build"));
 
 const ProductSchema = new mongoose.Schema({
-  id: Number,
+  _id: Number,
   title: String,
   description: String,
   category: String,
