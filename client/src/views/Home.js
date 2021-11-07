@@ -9,7 +9,7 @@ function Home() {
   const [myProductsList, setMyProductsList] = useState([]);
   const [myAllProductsList, setMyAllProductsList] = useState([]);
  const [categories, setCategories] = useState([]);
- const [productsPrice, setProductsPrice] = useState([]);
+ const [productsFilteredPrice, setProductsFilteredPrice] = useState([]);
   useEffect(() => {
     fetch("/api/products")
       .then((res) => {
@@ -18,9 +18,9 @@ function Home() {
       .then((myProductsList)=> {
         setMyProductsList(myProductsList);
         setMyAllProductsList(myProductsList);
-        let categories = myProductsList.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index);
-        setCategories(categories)
-        setProductsPrice(productsPrice);
+        let filteredProducts = myAllProductsList.filter((product) => product.category === category);
+        setMyProductsList(filteredProducts);
+        setCategories(category)
         });
   }, []);
   const categorySelected = (category) =>{
@@ -31,11 +31,10 @@ function Home() {
       setMyProductsList(filteredProducts);
     }
   }
-  const FilterPrice = (minPrice, maxPrice) => {
-    setProductsPrice(
-      productsPrice.filter((x) => x.price >= minPrice && x.price <= maxPrice)
-    );
-  };
+  const FilterPrice = (price) => {
+    let filteredProducts = myAllProductsList.filter((product) => product.price >= price[0] && product.price <= price[1]);
+    setMyProductsList(filteredProducts);
+}
 return (
     <div className="App">
   
