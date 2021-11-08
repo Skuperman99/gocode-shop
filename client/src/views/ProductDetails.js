@@ -18,7 +18,7 @@ function ProductDetails() {
  
  
     <div>
-    <Product key={id} image={product?.image} title={product?.title} price={product?.price} id={id} category={product?.category}/>
+    <Product key={id} image={product?.image} title={product?.title} price={product?.price} _id={id} category={product?.category}/>
 </div>
   );
 }
